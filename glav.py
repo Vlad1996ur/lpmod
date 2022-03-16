@@ -305,7 +305,7 @@ while True:
 						    blasthac(id, "👾успешно удалён из чс: 🆔️"+(per_id))
 					
 					
-					if message[0:4+(p)] == (pref1)+ " -чс ":
+					if message[0:5+(p)] == (pref1)+ " -чс ":
 						idotprp()
 						if str(idotpr) == str(my_id):
 						    try:
@@ -340,7 +340,7 @@ while True:
 						        print(er)
 					
 					
-					if message[0:4+(p)] == (pref1)+ " +чс ":
+					if message[0:5+(p)] == (pref1)+ " +чс ":
 						idotprp()
 						if str(idotpr) == str(my_id):
 						    try:
@@ -370,7 +370,7 @@ while True:
 						    blasthac(id, "👾успешно удалён: 🆔️"+str(per_id))
 					
 					
-					if message[0:4+(p)] == (pref1)+ " -др ":
+					if message[0:5+(p)] == (pref1)+ " -др ":
 						idotprp()
 						if str(idotpr) == str(my_id):
 						    try:
@@ -402,7 +402,7 @@ while True:
 						    blasthac(id, "🎈успешно добавлен: 🆔️"+str(per_id))
 					
 					
-					if message[0:4+(p)] == (pref1)+ " +др ":
+					if message[0:5+(p)] == (pref1)+ " +др ":
 						idotprp()
 						if str(idotpr) == str(my_id):
 						    try:
