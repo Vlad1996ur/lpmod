@@ -367,7 +367,7 @@ while True:
 						        per_id=str(smsms['items'][0]['peer_id'])
 						        deletdr(per_id)
 						    deletdr(per_id)
-						    blasthac(id, "👾успешно удалён: 🆔️"+(per_id))
+						    blasthac(id, "👾успешно удалён: 🆔️"+str(per_id))
 					
 					
 					if message[0:4+(p)] == (pref1)+ " -др":
@@ -399,7 +399,7 @@ while True:
 						        per_id=str(smsms['items'][0]['peer_id'])
 						        drdob(per_id)
 						    drdob(per_id)
-						    blasthac(id, "🎈успешно добавлен: 🆔️"+(per_id))
+						    blasthac(id, "🎈успешно добавлен: 🆔️"+str(per_id))
 					
 					
 					if message[0:4+(p)] == (pref1)+ " +др":
