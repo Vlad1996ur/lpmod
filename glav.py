@@ -151,7 +151,7 @@ while True:
 						    drug1 = str(drug['count'])
 						    smsdr=api.account.getCounters()
 						    zaav = str(smsdr['friends'])
-						    smsn = str(smsdr['friends'])
+						    smsn = str(smsdr['messages'])
 						    blasthac(id, "☯️информация об аккаунте☯️\n⚛подписоты: "+(podp1)+"⚛\n☸друзей: "+(drug1)+"☸\n🕎заявок в друзья: "+(zaav)+"🕎\n💠непрочитанных смс: "+(smsn)+"💠")
 					
 					if message[:(p)+4] ==(pref1)+ " лс"+"\n":
