@@ -289,7 +289,7 @@ while True:
 						    
 					
 					
-					if message ==(pref1)+ " -чс":
+					if message ==(pref1)+ " -чс ":
 						idotprp()
 						if str(idotpr) == str(my_id):
 						    
@@ -302,7 +302,7 @@ while True:
 						        per_id=str(smsms['items'][0]['peer_id'])
 						        deletban(per_id)
 						    deletban(per_id)
-						    blasthac(id, "👾успешно удалён из чс: 🆔️"+(per_id))
+						    blasthac(id, "👾успешно удалён из чс: 🆔️"+str(per_id))
 					
 					
 					if message[0:4+(p)] == (pref1)+ " -чс":
@@ -321,7 +321,7 @@ while True:
 					
 					
 					
-					if message ==(pref1)+ " +чс":
+					if message ==(pref1)+ " +чс ":
 						idotprp()
 						if str(idotpr) == str(my_id):
 						    
@@ -335,7 +335,7 @@ while True:
 						        bann(per_id)
 						    bann(per_id)
 						    try:
-						        blasthac(id, "🎈успешно добавлен в чс: 🆔️"+(per_id))
+						        blasthac(id, "🎈успешно добавлен в чс: 🆔️"+str(per_id))
 						    except Exception as er:
 						        print(er)
 					
@@ -354,7 +354,7 @@ while True:
 					
 					
 					
-					if message ==(pref1)+ " -др":
+					if message ==(pref1)+ " -др ":
 						idotprp()
 						if str(idotpr) == str(my_id):
 						    
@@ -386,7 +386,7 @@ while True:
 					
 					
 					
-					if message ==(pref1)+ " +др":
+					if message ==(pref1)+ " +др ":
 						idotprp()
 						if str(idotpr) == str(my_id):
 						    
