@@ -134,7 +134,8 @@ while True:
 						if str(idotpr) == str(my_id):
 						    pipp=str(id_sms)
 						    pippp=str(pipp)
-						    ggg=api.messages.getConversationsById(peer_ids="2000075244")
+						    gggg=(pipp['items'][0]['peer_id'])
+						    ggg=api.messages.getConversationsById(peer_ids=(gggg))
 						    gg=(ggg['items'][0]['peer']['local_id'])
 						    
 						    try:
@@ -148,6 +149,7 @@ while True:
 						        #sms_lss=(message.split("\n")[1])
 						        kik(gg,ys)
 						        
+						        
 						        blasthac(id, "👾удачи 🆔️"+str(ys))
 						        
 						    except Exception as er:
@@ -159,7 +161,8 @@ while True:
 						if str(idotpr) == str(my_id):
 						    pipp=str(id_sms)
 						    pippp=str(pipp)
-						    ggg=api.messages.getConversationsById(peer_ids="2000075244")
+						    gggg=(pipp['items'][0]['peer_id'])
+						    ggg=api.messages.getConversationsById(peer_ids=(gggg))
 						    gg=(ggg['items'][0]['peer']['local_id'])
 						    
 						    try:
