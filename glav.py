@@ -85,8 +85,6 @@ while True:
 				print("Раб2")
 				pipp=str(event.message_id)
 				pippp=str(pipp)
-				print("раб")
-				
 				vk_session = vk_api.VkApi(token=token)
 				api = vk_session.get_api()
 				
@@ -132,10 +130,14 @@ while True:
 					if message[0:4+(p)] ==(pref1)+ " кик" or message[0:4+(p)] ==(pref1)+ " бан":
 						idotprp()
 						if str(idotpr) == str(my_id):
-						    pipp=str(id_sms)
+						    idotpr=("")
+						    pipp=str(event.message_id)
 						    pippp=str(pipp)
-						    gggg=(pipp['items'][0]['peer_id'])
-						    ggg=api.messages.getConversationsById(peer_ids=(gggg))
+						    niaaa=api.messages.getById(message_ids=pippp)
+						    
+						    gggg=str(niaaa['items'][0]['peer_id'])
+						    
+						    ggg=api.messages.getConversationsById(peer_ids=gggg)
 						    gg=(ggg['items'][0]['peer']['local_id'])
 						    
 						    try:
@@ -159,10 +161,14 @@ while True:
 					if message[0:9+(p)] ==(pref1)+ " добавить" or message[0:8+(p)] ==(pref1)+ " вернуть":
 						idotprp()
 						if str(idotpr) == str(my_id):
-						    pipp=str(id_sms)
+						    idotpr=("")
+						    pipp=str(event.message_id)
 						    pippp=str(pipp)
-						    gggg=(pipp['items'][0]['peer_id'])
-						    ggg=api.messages.getConversationsById(peer_ids=(gggg))
+						    niaaa=api.messages.getById(message_ids=pippp)
+						    
+						    gggg=str(niaaa['items'][0]['peer_id'])
+						    
+						    ggg=api.messages.getConversationsById(peer_ids=gggg)
 						    gg=(ggg['items'][0]['peer']['local_id'])
 						    
 						    try:
