@@ -10,7 +10,7 @@ from s_rek import skrrek
 from ban import bann,deletban
 from ls import sms_ls
 from s_onlain import s_onli
-
+from kmddobbs import dobbs,kik
 
 conect = sqlite3.connect("server.bd")
 cursor = conect.cursor()
@@ -128,6 +128,57 @@ while True:
 					prefixs = str(prefixss)
 					pref1=str(prefixs[3:-4])
 					p=len(pref1)
+					
+					if message[0:4+(p)] ==(pref1)+ " кик" or message[0:4+(p)] ==(pref1)+ " бан":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    pipp=str(id_sms)
+						    pippp=str(pipp)
+						    ggg=api.messages.getConversationsById(peer_ids="2000075244")
+						    gg=(ggg['items'][0]['peer']['local_id'])
+						    
+						    try:
+						        lk=(message.split("\n")[-0])
+						        lkk=(lk.split("/")[3])
+						        print(lkk)
+						        us_ids=api.users.get(user_ids=lkk)
+						        
+						        ys=str(us_ids[0]['id'])
+						        print(ys)
+						        #sms_lss=(message.split("\n")[1])
+						        kik(gg,ys)
+						        
+						        blasthac(id, "👾удачи 🆔️"+str(ys))
+						        
+						    except Exception as er:
+						         blasthac(id, (er))
+					
+					
+					if message[0:9+(p)] ==(pref1)+ " добавить" or message[0:8+(p)] ==(pref1)+ " вернуть":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    pipp=str(id_sms)
+						    pippp=str(pipp)
+						    ggg=api.messages.getConversationsById(peer_ids="2000075244")
+						    gg=(ggg['items'][0]['peer']['local_id'])
+						    
+						    try:
+						        lk=(message.split("\n")[-0])
+						        lkk=(lk.split("/")[3])
+						        print(lkk)
+						        us_ids=api.users.get(user_ids=lkk)
+						        
+						        ys=str(us_ids[0]['id'])
+						        print(ys)
+						        #sms_lss=(message.split("\n")[1])
+						        dobbs(gg,ys)
+						        
+						        blasthac(id, "👾привет 🆔️"+str(ys))
+						        
+						    except Exception as er:
+						         blasthac(id, (er))
+						        
+					
 					
 					if message[0:4+(p)] ==(pref1)+ " -вч":
 						idotprp()
