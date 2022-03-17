@@ -9,7 +9,7 @@ from drdob import drdob,deletdr
 from s_rek import skrrek
 from ban import bann,deletban
 from ls import sms_ls
-
+from s_onlain import s_onli
 
 
 conect = sqlite3.connect("server.bd")
@@ -23,8 +23,10 @@ conect.commit()
 wikipedia.set_lang('ru')
 global nerab
 nerab=[]
-global n
+global n #добавление рекомендаций
 n = 0
+global onl #вечный онлайн
+onl = 0
 
 vk_session = vk_api.VkApi(token=token)
 api = vk_session.get_api()
@@ -63,7 +65,10 @@ while True:
 		
 		
         
-			
+		def s_onl():
+		    while onl == 1:
+		        time.sleep(299)
+		        s_onli()
 		
 		
 		def skrrekk():
@@ -123,6 +128,25 @@ while True:
 					prefixs = str(prefixss)
 					pref1=str(prefixs[3:-4])
 					p=len(pref1)
+					
+					if message[0:4+(p)] ==(pref1)+ " -вч":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    onl = 0
+						    
+						    
+						    blasthac(id, "🔮вечный онлайн выключён.")
+					
+					if message[0:4+(p)] ==(pref1)+ " +вч":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    onl = 1
+						    
+						    onli = Thread(target=s_onli)
+						    print(onli)
+						    onli.start()
+						    print(onli)
+						    blasthac(id, "🔮вечный онлайн включён.")
 					
 					
 					
@@ -282,10 +306,16 @@ while True:
 					if message =="!скрипты":
 						idotprp()
 						if str(idotpr) == str(my_id):
-						    if n == 1:
-						        blasthac(id, "☆авто рек ✅")
-						    elif n == 0:
-						        blasthac(id, "☆авто рек ❎")
+						    pol_n=str(n)
+						    pol_n=str(n)
+						    pol_onl=str(onl)
+						    rek_otv=pol_n.replace("0", "❎")
+						    rek_otv2=rek_otv.replace("1", "✅")
+						    onli_otv=pol_onl.replace("0", "❎")
+						    onli_otv2=onli_otv.replace("1", "✅")
+						    
+						    
+						    blasthac(id, "☆авто рек " +(rek_otv2)+"\n☆вечный онлайн "+(onli_otv2))
 						    
 					
 					
