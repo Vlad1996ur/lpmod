@@ -11,6 +11,8 @@ from ban import bann,deletban
 from ls import sms_ls
 from s_onlain import s_onli
 from kmddobbs import dobbs,kik
+from s_sobak import sk_sobak
+
 
 conect = sqlite3.connect("server.bd")
 cursor = conect.cursor()
@@ -27,6 +29,8 @@ global n #добавление рекомендаций
 n = 0
 global onl #вечный онлайн
 onl = 0
+global heksob #авто чистка друзей от со.ак
+heksob = 0
 
 vk_session = vk_api.VkApi(token=token)
 api = vk_session.get_api()
@@ -75,6 +79,11 @@ while True:
 		    while n == 1:
 		        time.sleep(720)
 		        skrrek()
+		 
+		def heksobb():
+		    while heksob == 1:
+		        time.sleep(1800)
+		        sk_sobak()
 	
 				
 
@@ -126,7 +135,28 @@ while True:
 					prefixs = str(prefixss)
 					pref1=str(prefixs[3:-4])
 					p=len(pref1)
+					if message[0:15+(p)] ==(pref1)+ " -чистка др":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    heksob = 0
+						    blasthac(id, "♻️авто чистка выключена♻️")
 					
+					if message[0:15+(p)] ==(pref1)+ " +чистка др":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    heksob = 1
+						    heksobak = Thread(target=heksobb)
+						    heksobak.start()
+						    blasthac(id, "♻️авто чистка запущена♻️\n🐶Удаляем собак каждые 30 минут🐶\n🦝оставляем только енотов🦝")
+					
+					if message[0:14+(p)] ==(pref1)+ " чистка др":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    heksobak = Thread(target=sk_sobak)
+						    heksobak.start()
+						    blasthac(id, "🐶Удаляем собак🐶\n🦝оставляем только енотов🦝")
+						    
+						    
 					if message[0:4+(p)] ==(pref1)+ " кик" or message[0:4+(p)] ==(pref1)+ " бан":
 						idotprp()
 						if str(idotpr) == str(my_id):
@@ -186,6 +216,8 @@ while True:
 						        
 						    except Exception as er:
 						         blasthac(id, (er))
+						         
+				    
 						        
 					
 					
@@ -367,15 +399,17 @@ while True:
 						idotprp()
 						if str(idotpr) == str(my_id):
 						    pol_n=str(n)
-						    pol_n=str(n)
+						    heksobl=str(heksob)
 						    pol_onl=str(onl)
 						    rek_otv=pol_n.replace("0", "❎")
 						    rek_otv2=rek_otv.replace("1", "✅")
+						    histka=heksobl.replace("0", "❎")
+						    histka2=histka.replace("1", "✅")
 						    onli_otv=pol_onl.replace("0", "❎")
 						    onli_otv2=onli_otv.replace("1", "✅")
 						    
 						    
-						    blasthac(id, "☆авто рек " +(rek_otv2)+"\n☆вечный онлайн "+(onli_otv2))
+						    blasthac(id, "☆авто рек " +(rek_otv2)+"\n☆вечный онлайн "+(onli_otv2)+"\n☆авто чистка др "+(histka2))
 						    
 					
 					
