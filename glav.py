@@ -31,10 +31,7 @@ global onl #вечный онлайн
 onl = 0
 global heksob #авто чистка друзей от со.ак
 heksob = 0
-global prefp
-prefp="пп"
-global dov
-dov=""
+delit=0
 
 vk_session = vk_api.VkApi(token=token)
 api = vk_session.get_api()
@@ -59,7 +56,7 @@ while True:
 		
 
 		def blasthack(id, text):
-			    bh.method('messages.send', {'peer_id' : id, 'message' : text, 'random_id': 0, })
+			    bh.method('messages.send', {'user_id' : id, 'message' : text, 'random_id': 0, })
 			   
 		def blasthac(id, text):
 			pipp=str(id_sms)
@@ -94,14 +91,19 @@ while True:
 		def idotprp():
 			try:
 				global idotpr
-				global idotprr
 				idotpr=("")
-				idotprr=("")
+				global delit
 				print("Раб2")
 				pipp=str(event.message_id)
 				pippp=str(pipp)
 				vk_session = vk_api.VkApi(token=token)
 				api = vk_session.get_api()
+				try:
+				    api.messages.delete(message_ids=delit)
+				except Exception as er:
+				    print(er)
+				    
+				delit=(id_smss)
 				
 				niaaa=api.messages.getById(message_ids=pippp)
 				print(niaaa)
@@ -109,9 +111,7 @@ while True:
 				try:
 					
 					idotp=(niaaa['items'][0]['from_id'])
-					idot=(niaaa['items'][0]['peer_id'])
 					
-					idotprr=str(idot)
 					idotpr=str(idotp)
 					print(idotpr)
 				except Exception as er:
@@ -120,6 +120,7 @@ while True:
 					idotpr=(niaaa['items'][0]['from_id'])
 					idotpr=str(idotp)
 					print(idotpr)
+					
 			except Exception as er:
 				print("ошбика в idotpr")
 				
@@ -143,76 +144,6 @@ while True:
 					prefixs = str(prefixss)
 					pref1=str(prefixs[3:-4])
 					p=len(pref1)
-					pp=len(prefp)
-					
-					if message[0:5+(p)] ==(pref1)+ " довы":
-						idotprp()
-						if str(idotpr) == str(my_id):
-						  
-						  
-						  dovv=dov.replace(",", "❄[id")
-						  dovvi=dovv.replace(" ", "|доверенный]\n")
-						  
-						  blasthac(id,"💎Список довов\n"+(dovvi))
-					
-					
-					if message[0:5+(p)] ==(pref1)+ " -дов":
-						idotprp()
-						if str(idotpr) == str(my_id):
-						    
-						    pipp=str(id_sms)
-						    pippp=str(pipp)
-						    smsms=api.messages.getById(message_ids=pippp)
-						    try:
-						       per_id=str(smsms['items'][0]['reply_message']['from_id'])
-						    except Exception as er:
-						        per_id=str(smsms['items'][0]['peer_id'])
-						    dovi= dov.find(per_id)
-						    if dovi != -1:
-						        idii=str(per_id)
-						        ss=dov.replace(","+(idii)+" ", "")
-						        dov=ss
-						        print(dov)
-						        blasthac(id, "💠дов удалён")
-					
-					
-					
-					
-					
-					
-					if message[0:5+(p)] ==(pref1)+ " +дов":
-						idotprp()
-						if str(idotpr) == str(my_id):
-						    
-						    pipp=str(id_sms)
-						    pippp=str(pipp)
-						    smsms=api.messages.getById(message_ids=pippp)
-						    try:
-						       per_id=str(smsms['items'][0]['reply_message']['from_id'])
-						    except Exception as er:
-						        per_id=str(smsms['items'][0]['peer_id'])
-						    dovi= dov.find(per_id)
-						    if dovi == -1 and str(per_id) != str(my_id):
-						        idii=str(per_id)
-						        dov+=","+(idii)+" "
-						        print(dov)
-						        blasthac(id, "💠дов добавлен")
-						    else:
-						        blasthac(id, "💠ошибка добавления дова")
-					
-					
-					if message[0:0+(pp)] ==(prefp):
-						idotprp()
-						print(dov)
-						kk= dov.find(idotpr)
-						if kk != -1:
-						  blasthack(idotprr, (message[(pp):]))
-				    
-				    
-				    
-				    
-					
-					
 					if message[0:15+(p)] ==(pref1)+ " -чистка др":
 						idotprp()
 						if str(idotpr) == str(my_id):
@@ -622,11 +553,11 @@ while True:
 						idotprp()
 						if str(idotpr) == str(my_id):
 						    try:
-						        blasthac(id,"🔑Префикс: " +(pref1)+"\n🔑Префикс повторялки: "+(prefp))
+						        blasthac(id,"🔑Префикс: " +(pref1))
 						    except Exception as er:
 							    blasthac(id, "⚠Сначала установите префикс.\n!установить префикс (префикс) без скобочек.")
 						    
-					
+						    
 						    
 					if message[0:17] == "!установить преф ":
 						idotprp()
@@ -649,15 +580,6 @@ while True:
 							
 							
 							blasthac(id, "📎Префикс установлен: "+(m))
-					
-					
-					if message[0:23] == "!установить повторялку ":
-						idotprp()
-						
-						if str(idotpr) == str(my_id):
-						    
-						    prefp=(message[23:])
-						    blasthac(id, "📎Префикс повторялки установлен: "+(message[23:]))
 					
 					
 					
