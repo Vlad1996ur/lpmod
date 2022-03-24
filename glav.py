@@ -99,7 +99,7 @@ while True:
 				vk_session = vk_api.VkApi(token=token)
 				api = vk_session.get_api()
 				try:
-				    api.messages.delete(message_ids=delit)
+				    api.messages.delete(message_ids=delit,delete_for_all="1")
 				except Exception as er:
 				    print(er)
 				    
