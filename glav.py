@@ -95,6 +95,7 @@ while True:
 			try:
 				global idotpr
 				global idotprr
+				global delit
 				idotpr=("")
 				idotprr=("")
 				print("Раб2")
@@ -106,7 +107,10 @@ while True:
 				try:
 				    api.messages.delete(message_ids=delit,delete_for_all="1")
 				except Exception as er:
-				    print(er)
+				    try:
+				        api.messages.delete(message_ids=delit,delete_for_all="0")
+				    except Exception as er:
+				        print(er)
 				    
 				delit=(id_smss)
 				
