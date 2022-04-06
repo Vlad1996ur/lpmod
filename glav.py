@@ -15,7 +15,7 @@ from s_sobak import sk_sobak
 from red_sms import cmd_edit
 from sms_n import sms_ne
 from delit_sms import cmd_dell
-
+from s_ferma import s_farm
 
 conect = sqlite3.connect("server.bd")
 cursor = conect.cursor()
@@ -33,6 +33,9 @@ n = 0
 global onl #вечный онлайн
 onl = 0
 global heksob #авто чистка друзей от со.ак
+
+global farm
+farm = 0
 heksob = 0
 global prefp
 prefp="пп"
@@ -73,6 +76,11 @@ while True:
 			per_id=str(niaa['items'][0]['peer_id'])
 			pkl = str(per_id)
 			bh.method('messages.edit', {'peer_id' : pkl, 'message' : text, 'random_id': 0, 'message_id' : id_sms, })
+		
+		def farmit():
+		    while farm == 1:
+		        time.sleep(14400)
+		        s_farm()
 		
 		
 		def sms_nehit():
@@ -165,6 +173,22 @@ while True:
 					pref1=str(prefixs[3:-4])
 					p=len(pref1)
 					pp=len(prefp)
+					
+					if message[0:10+(p)] ==(pref1)+ " -фармкоин":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    farm = 0
+						    
+						    blasthac(id, "💰фарм ирис коинов выключён💰")
+						    
+					if message[0:10+(p)] ==(pref1)+ " +фармкоин":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    farm = 1
+						    farmit1 = Thread(target=farmit)
+						    farmit1.start()
+						    blasthac(id, "💰фарм ирис коинов включён💰")
+					
 					
 					if message[0:4+(p)] ==(pref1)+ " дд " or message[0:3+(p)] ==(pref1)+ " дд":
 						idotprp()
@@ -534,6 +558,7 @@ while True:
 						    pol_n=str(n)
 						    heksobl=str(heksob)
 						    pol_onl=str(onl)
+						    iris=str(farm)
 						    rek_otv=pol_n.replace("0", "❎")
 						    rek_otv2=rek_otv.replace("1", "✅")
 						    histka=heksobl.replace("0", "❎")
@@ -541,8 +566,11 @@ while True:
 						    onli_otv=pol_onl.replace("0", "❎")
 						    onli_otv2=onli_otv.replace("1", "✅")
 						    
+						    iris1=iris.replace("0", "❎")
+						    iris2=iris1.replace("1", "✅")
 						    
-						    blasthac(id, "☆авто рек " +(rek_otv2)+"\n☆вечный онлайн "+(onli_otv2)+"\n☆авто чистка др "+(histka2))
+						    
+						    blasthac(id, "☆авто рек " +(rek_otv2)+"\n☆вечный онлайн "+(onli_otv2)+"\n☆авто чистка др "+(histka2)+"\n☆фарм коин ирис "+(histka2))
 						    
 					
 					
