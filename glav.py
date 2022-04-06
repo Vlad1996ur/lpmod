@@ -12,6 +12,9 @@ from ls import sms_ls
 from s_onlain import s_onli
 from kmddobbs import dobbs,kik
 from s_sobak import sk_sobak
+from red_sms import cmd_edit
+from sms_n import sms_ne
+from delit_sms import cmd_dell
 
 
 conect = sqlite3.connect("server.bd")
@@ -72,6 +75,10 @@ while True:
 			bh.method('messages.edit', {'peer_id' : pkl, 'message' : text, 'random_id': 0, 'message_id' : id_sms, })
 		
 		
+		def sms_nehit():
+			sms_ne(bh)
+		
+		
         
 		def s_onl():
 		    while onl == 1:
@@ -83,6 +90,7 @@ while True:
 		    while n == 1:
 		        time.sleep(720)
 		        skrrek()
+		
 		 
 		def heksobb():
 		    while heksob == 1:
@@ -110,7 +118,7 @@ while True:
 				    try:
 				        api.messages.delete(message_ids=delit,delete_for_all="0")
 				    except Exception as er:
-				        print(er)
+				        print()
 				    
 				delit=(id_smss)
 				
@@ -147,6 +155,7 @@ while True:
 					
 					message = event.text.lower()
 					id = event.user_id
+					owner_info = event.peer_id
 					idd = str(id)
 					id_smss = event.message_id
 					id_sms = str(id_smss)
@@ -156,6 +165,40 @@ while True:
 					pref1=str(prefixs[3:-4])
 					p=len(pref1)
 					pp=len(prefp)
+					
+					if message[0:4+(p)] ==(pref1)+ " дд " or message[0:3+(p)] ==(pref1)+ " дд":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    print(owner_info)
+						    
+						    
+						    try:
+						    	kol=(message[(p)+4])
+						    	cmd_dell(bh, event,my_id,int(kol))
+						    except Exception as er:
+						    	kol=5
+						    	cmd_dell(bh, event,my_id,int(kol))
+						    #blasthac(id,"♡р♡е♡д♡с♡м♡с♡")
+					
+					
+					
+					if message[0:5+(p)] ==(pref1)+ " смс+":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    nehit = Thread(target=sms_nehit)
+						    nehit.start()
+						    blasthac(id,"♻️отмечаем все диалоги непрочитанными♻️")
+					
+					if message[0:5+(p)] ==(pref1)+ " ред ":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    print(owner_info)
+						    kol=(message[(p)+5])
+						    
+						    cmd_edit(bh, event,my_id,int(kol))
+						    blasthac(id,"♡р♡е♡д♡с♡м♡с♡")
+						    
+					
 					
 					if message[0:5+(p)] ==(pref1)+ " довы":
 						idotprp()
