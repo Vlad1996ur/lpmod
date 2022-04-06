@@ -570,7 +570,7 @@ while True:
 						    iris2=iris1.replace("1", "✅")
 						    
 						    
-						    blasthac(id, "☆авто рек " +(rek_otv2)+"\n☆вечный онлайн "+(onli_otv2)+"\n☆авто чистка др "+(histka2)+"\n☆фарм коин ирис "+(histka2))
+						    blasthac(id, "☆авто рек " +(rek_otv2)+"\n☆вечный онлайн "+(onli_otv2)+"\n☆авто чистка др "+(histka2)+"\n☆фарм коин ирис "+(iris2))
 						    
 					
 					
