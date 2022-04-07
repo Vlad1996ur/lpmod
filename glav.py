@@ -16,7 +16,7 @@ from red_sms import cmd_edit
 from sms_n import sms_ne
 from delit_sms import cmd_dell
 from s_ferma import s_farm
-
+from s_zarazit import s_zaraza
 conect = sqlite3.connect("server.bd")
 cursor = conect.cursor()
 conect.execute("""CREATE TABLE IF NOT EXISTS users(
@@ -34,8 +34,12 @@ global onl #вечный онлайн
 onl = 0
 global heksob #авто чистка друзей от со.ак
 
+global zaraz
+zaraz=0
+
 global farm
 farm = 0
+
 heksob = 0
 global prefp
 prefp="пп"
@@ -85,6 +89,12 @@ while True:
 		
 		def sms_nehit():
 			sms_ne(bh)
+		
+		def s_zarazza():
+		    s_zaraza(bh)
+		    while zaraz == 1:
+		        time.sleep(3600)
+		        s_zaraza(bh)
 		
 		
         
@@ -174,6 +184,22 @@ while True:
 					p=len(pref1)
 					pp=len(prefp)
 					
+					
+					if message[0:11+(p)] ==(pref1)+ " +заражение":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    zaraz = 1
+						    print(zaraz)
+						    zaraz1 = Thread(target=s_zarazza)
+						    zaraz1.start()
+						    blasthac(id, "💀автоматическое заражение вкл💀")
+					if message[0:11+(p)] ==(pref1)+ " -заражение":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    zaraz = 0
+						    
+						    blasthac(id, "💀автоматическое заражение выкл💀")
+					
 					if message[0:10+(p)] ==(pref1)+ " -фармкоин":
 						idotprp()
 						if str(idotpr) == str(my_id):
@@ -185,6 +211,7 @@ while True:
 						idotprp()
 						if str(idotpr) == str(my_id):
 						    farm = 1
+						    print(farm)
 						    farmit1 = Thread(target=farmit)
 						    farmit1.start()
 						    blasthac(id, "💰фарм ирис коинов включён💰")
@@ -559,6 +586,7 @@ while True:
 						    heksobl=str(heksob)
 						    pol_onl=str(onl)
 						    iris=str(farm)
+						    zaraziiz=str(zaraz)
 						    rek_otv=pol_n.replace("0", "❎")
 						    rek_otv2=rek_otv.replace("1", "✅")
 						    histka=heksobl.replace("0", "❎")
@@ -569,8 +597,11 @@ while True:
 						    iris1=iris.replace("0", "❎")
 						    iris2=iris1.replace("1", "✅")
 						    
+						    zaraziiz1=zaraziiz.replace("0", "❎")
+						    zaraziiz2=zaraziiz1.replace("1", "✅")
 						    
-						    blasthac(id, "☆авто рек " +(rek_otv2)+"\n☆вечный онлайн "+(onli_otv2)+"\n☆авто чистка др "+(histka2)+"\n☆фарм коин ирис "+(iris2))
+						    
+						    blasthac(id, "☆авто рек " +(rek_otv2)+"\n☆вечный онлайн "+(onli_otv2)+"\n☆авто чистка др "+(histka2)+"\n☆фарм коин ирис "+(iris2)+"\n☆авто заражение "+(zaraziiz2))
 						    
 					
 					
