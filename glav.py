@@ -17,6 +17,12 @@ from sms_n import sms_ne
 from delit_sms import cmd_dell
 from s_ferma import s_farm
 from s_zarazit import s_zaraza
+from cmd_komm import cmd_komment
+
+
+
+
+
 conect = sqlite3.connect("server.bd")
 cursor = conect.cursor()
 conect.execute("""CREATE TABLE IF NOT EXISTS users(
@@ -93,7 +99,7 @@ while True:
 		def s_zarazza():
 		    s_zaraza(bh)
 		    while zaraz == 1:
-		        time.sleep(3600)
+		        time.sleep(sekk)
 		        s_zaraza(bh)
 		
 		
@@ -184,15 +190,31 @@ while True:
 					p=len(pref1)
 					pp=len(prefp)
 					
+					if message[0:6+(p)] ==(pref1)+ " +комм":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						  
+						  
+						  cmd_komment(event.message_id,bh)
+						  
+						  
+					
+					
+					
 					
 					if message[0:11+(p)] ==(pref1)+ " +заражение":
 						idotprp()
 						if str(idotpr) == str(my_id):
 						    zaraz = 1
+						    try:
+						    	lol = (message[11+(p):])
+						    	sekk = int(lol)
+						    except Exception as er:
+						    	sekk = 3600
 						    print(zaraz)
 						    zaraz1 = Thread(target=s_zarazza)
 						    zaraz1.start()
-						    blasthac(id, "💀автоматическое заражение вкл💀")
+						    blasthac(id, "💀автоматическое заражение вкл💀\nкаждые "+str(sekk)+" сек")
 					if message[0:11+(p)] ==(pref1)+ " -заражение":
 						idotprp()
 						if str(idotpr) == str(my_id):
