@@ -18,6 +18,8 @@ from delit_sms import cmd_dell
 from s_ferma import s_farm
 from s_zarazit import s_zaraza
 from cmd_komm import cmd_komment
+from kmd_uv import cmd_uved
+from s_avtouv import s_avto_uv
 
 
 
@@ -39,6 +41,8 @@ n = 0
 global onl #вечный онлайн
 onl = 0
 global heksob #авто чистка друзей от со.ак
+global avtoyved
+avtoyved = 0
 
 global zaraz
 zaraz=0
@@ -91,6 +95,11 @@ while True:
 		    while farm == 1:
 		        time.sleep(14400)
 		        s_farm()
+		
+		def avtoyvediki():
+			while avtoyved == 1:
+				time.sleep(120)
+				s_avto_uv(my_id)
 		
 		
 		def sms_nehit():
@@ -190,6 +199,36 @@ while True:
 					p=len(pref1)
 					pp=len(prefp)
 					
+					if message[0:9+(p)] ==(pref1)+ " -авто ув":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    avtoyved = 0
+						    
+						    blasthac(id,"♻️ авто чистка выкл")
+					
+					
+					if message[0:9+(p)] ==(pref1)+ " +авто ув":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    avtoyved = 1
+						    avtomatyv= Thread(target=avtoyvediki)
+						    avtomatyv.start()
+						    blasthac(id,"♻️ставим уведы на всех кто отметился в закрепе(проверка каждые 2 минуты")
+						    
+						  
+						  
+						  
+					
+					
+					
+					if message[0:4+(p)] ==(pref1)+ " +ув":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						  
+						  
+						  cmd_uved(event.message_id,bh)
+					
+					
 					if message[0:6+(p)] ==(pref1)+ " +комм":
 						idotprp()
 						if str(idotpr) == str(my_id):
@@ -266,7 +305,7 @@ while True:
 						idotprp()
 						if str(idotpr) == str(my_id):
 						    print(owner_info)
-						    kol=(message[(p)+5])
+						    kol=(message[(p)+5:])
 						    
 						    cmd_edit(bh, event,my_id,int(kol))
 						    blasthac(id,"♡р♡е♡д♡с♡м♡с♡")
@@ -622,8 +661,11 @@ while True:
 						    zaraziiz1=zaraziiz.replace("0", "❎")
 						    zaraziiz2=zaraziiz1.replace("1", "✅")
 						    
+						    avtyv1=avtoyved.replace("0", "❎")
+						    avtuv2=avtyv1.replace("1", "✅")
 						    
-						    blasthac(id, "☆авто рек " +(rek_otv2)+"\n☆вечный онлайн "+(onli_otv2)+"\n☆авто чистка др "+(histka2)+"\n☆фарм коин ирис "+(iris2)+"\n☆авто заражение "+(zaraziiz2))
+						    
+						    blasthac(id, "☆авто рек " +(rek_otv2)+"\n☆вечный онлайн "+(onli_otv2)+"\n☆авто чистка др "+(histka2)+"\n☆фарм коин ирис "+(iris2)+"\n☆авто заражение "+(zaraziiz2)+"\n☆авто уведы "+(avtuv2))
 						    
 					
 					
