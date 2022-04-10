@@ -648,6 +648,7 @@ while True:
 						    pol_onl=str(onl)
 						    iris=str(farm)
 						    zaraziiz=str(zaraz)
+						    avtoyve=str(avtoyved)
 						    rek_otv=pol_n.replace("0", "❎")
 						    rek_otv2=rek_otv.replace("1", "✅")
 						    histka=heksobl.replace("0", "❎")
@@ -661,7 +662,7 @@ while True:
 						    zaraziiz1=zaraziiz.replace("0", "❎")
 						    zaraziiz2=zaraziiz1.replace("1", "✅")
 						    
-						    avtyv1=avtoyved.replace("0", "❎")
+						    avtyv1=avtoyve.replace("0", "❎")
 						    avtuv2=avtyv1.replace("1", "✅")
 						    
 						    
