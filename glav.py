@@ -20,7 +20,7 @@ from s_zarazit import s_zaraza
 from cmd_komm import cmd_komment
 from kmd_uv import cmd_uved
 from s_avtouv import s_avto_uv
-
+from poisk_yv import kmd_spisok_uv
 
 
 
@@ -187,7 +187,10 @@ while True:
 			if event.type == VkEventType.MESSAGE_NEW:
 					
 					message = event.text.lower()
-					id = event.user_id
+					try:
+						id = event.user_id
+					except Exception as error:
+						id = event.chat_id
 					owner_info = event.peer_id
 					idd = str(id)
 					id_smss = event.message_id
@@ -198,6 +201,13 @@ while True:
 					pref1=str(prefixs[3:-4])
 					p=len(pref1)
 					pp=len(prefp)
+					
+					if message[0:11+(p)] ==(pref1)+ " скинь увед":
+						idotprp()
+						if str(idotpr) == str(my_id):
+						    kmd_spisok_uv(my_id)
+						    
+						    blasthac(id,"☑список увед на кого можно поставить отправлен в избранное.")
 					
 					if message[0:9+(p)] ==(pref1)+ " -авто ув":
 						idotprp()
